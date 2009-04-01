@@ -9,3 +9,4 @@ config/database.yml
 
 # we don't want to keep track of the uploaded images
 public/uploads/photos/**/*
+public/uploads/photos/*
