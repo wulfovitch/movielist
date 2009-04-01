@@ -4,10 +4,29 @@
 	Movie List
 </h2>
 
-<ul>
-<% for movie in @movies %>
-	<li>
-		<%= link_to movie.movie_title, movie_url(movie) %> - <%= movie.user.realname %>
-	</li>
-<% end%>
-</ul>
+<% @movies_users.sort.each do |user, movies| %>
+  <h2><%= user %></h2>
+	<table width="100%">
+		<tr>
+      <th>movie title</th>
+			<th>movie original title</th>
+			<th>imdb link</th>
+			<th>bought at</th>
+			<th>media type</th>
+			<th>disc type</th>
+			<th>parental rating</th>
+    </tr>
+  <% for movie in movies %>
+    <tr>
+      <td><%= link_to movie.movie_title, movie_url(movie) %></td>
+			<td><%= movie.movie_original_title %></td>
+			<td><%= link_to "imdb link", movie.imdb_link %></td>
+			<td><%= movie.created_at.strftime("%d.%m.%Y") %></td>
+			<td><%= movie.media_type %></td>
+			<td><%= movie.disc_type %></td>
+			<td><%= movie.parental_rating %></td>
+    </tr>
+  <% end %>
+	</table>
+  <br />
+<% end %>

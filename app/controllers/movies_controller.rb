@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
   
   def index
     @movies = Movie.find(:all, :order => 'id DESC')
+    @movies_users = @movies.group_by { |m| m.user.realname }
   end
   
   def show
