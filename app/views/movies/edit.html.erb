@@ -1,0 +1,37 @@
+<% error_messages_for :movies %>     
+
+<% form_for(@movie) do |f| %>   
+<fieldset>    
+	<legend>Edit movie</legend>
+	<p>
+ 		<label>movie title</label>    
+ 		<%= f.text_field 'movie_title' %>
+	</p>
+	<p>
+ 		<label>movie original title</label>    
+ 		<%= f.text_field 'movie_original_title' %>
+	</p>
+	<p>
+ 		<label>imdb link</label>    
+ 		<%= f.text_field 'imdb_link' %>  
+     </p>
+	<p>
+ 		<label>media type</label>    
+ 		<%= select('movie', 'media_type', [[@movie.media_type, @movie.media_type], ["movie", :movie], ["series", :series]])%>
+     </p>
+	<p>
+ 		<label>disc type</label>    
+		<%= select('movie', 'disc_type', [[@movie.disc_type, @movie.disc_type], ["dvd", :dvd], ["bluray", :bluray]])%>
+     </p>
+	<p>
+ 		<label>parental rating</label>    
+ 		<%= f.select('parental_rating', [['usk ' + @movie.parental_rating, @movie.parental_rating], ["usk 18", 18], ["usk 16", 16], ["usk 12", 12], ["usk 6", 6], ["usk ohne", 0]])%>
+    </p>
+	<p>
+    	<%= f.submit "Update Movie" %>
+	</p>
+	<p>
+   		<%= link_to 'Cancel', movie_path %>
+	</p>
+</fieldset>  
+<% end %>

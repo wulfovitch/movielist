@@ -1,0 +1,15 @@
+<% form_tag home_url do %>
+
+  <p>
+    <label for="username">Username:</label>
+    <%= text_field_tag :username, '', {:size => '20'} %>
+  </p>
+  <p>
+    <label for="password">Passwort:</label>
+    <%= password_field_tag :password,'', {:size => '20'} %>
+  </p>
+  <p>
+    <%= submit_tag("Einloggen", {:class => "button"}) %>                            
+  </p>
+
+<% end %>

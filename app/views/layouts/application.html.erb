@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>movie list - <%= yield(:title) || 'movie list' %></title>
+	<%= stylesheet_link_tag "movielist" %>
+	
+	<style type="text/css" media="screen">
+	/* <![CDATA[ */
+	/* IE only 
+	ul {
+	padding-left: 1.5em;
+	position: relative;
+	left: -1.5em;
+	}*/
+	/* ]]> */
+	</style>
+</head>
+
+<body>
+	<div id="main">
+		
+		<div id="header">
+			<h1>movie list</h1>
+		</div>
+		
+		<div id="menu">
+			<ul>
+				<li <%# is_active?("home") %>><%= link_to "Home", home_url %></li>
+				<% if logged? %>
+					<li><%= link_to 'new movie', new_movie_url %></li>
+					<li><%= link_to 'logout [' + User.find_by_id(session[:user_id]).username + ']', logout_path %></li>
+				<% end %>
+			</ul>
+		</div>
+		
+		<div id="content">
+		  <div id="messages">
+	        <% if flash[:error] -%>
+	          <div id="error"><%= flash[:error] %></div>
+	          <div style="clear:both;"></div>
+	        <% end %> 
+	        <% if flash[:notice] -%>
+	          <div id="notice"><%= flash[:notice] %></div>
+	          <div style="clear:both;"></div>
+	        <% end %>   
+	      </div>	
+			
+	      <div class="yield_content">
+	        <%= yield %>
+	        <div style="clear: both;"></div>
+	      </div>
+		</div>
+		
+		<div id="footer">
+			<p>
+				&copy; <%= Time.now.year %> Wolfgang K&ouml;nig - movie list
+			</p>
+		</div>
+		
+	</div>
+</body>
+</html>

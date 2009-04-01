@@ -1,0 +1,13 @@
+<% title "movie list" %>
+
+<h2>
+	Movie List
+</h2>
+
+<ul>
+<% for movie in @movies %>
+	<li>
+		<%= link_to movie.movie_title, movie_url(movie) %> - <%= movie.user.realname %>
+	</li>
+<% end%>
+</ul>

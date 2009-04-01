@@ -1,0 +1,11 @@
+one:
+  id: 1
+  username: wulf
+  realname: Wolfgang
+  hashed_password: fd4cef7a4e607f1fcc920ad6329a6df2df99a4e8 #hallo
+
+two:
+  id: 2
+  username: koempy
+  realname: Frank
+  hashed_password: fd4cef7a4e607f1fcc920ad6329a6df2df99a4e8 #hallo
