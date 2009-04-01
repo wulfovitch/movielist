@@ -5,6 +5,10 @@
 </h2>
 
 <p>
+	<%= image_tag @movie.photo.url %>
+</p>
+
+<p>
 	Bought <strong><%= @movie.disc_type %></strong> at: <%= @movie.created_at.strftime("%d.%m.%Y") %>
 	| <%= link_to "edit", edit_movie_path(@movie) %> | <%= link_to "delete", movie_path(@movie), { :method => 'delete', :confirm => 'really delete this movie?' } %>
 </p>

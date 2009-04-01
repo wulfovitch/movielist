@@ -1,37 +1,3 @@
 <%= error_messages_for :movies %>   
 
-<% form_tag movies_path do -%>    
-<fieldset>    
-	<legend>New movie</legend>
-	<p>
- 		<label>movie title</label>    
- 		<%= text_field 'movie', 'movie_title' %>
-	</p>
-	<p>
- 		<label>movie original title</label>    
- 		<%= text_field 'movie', 'movie_original_title' %>
-	</p>
-	<p>
- 		<label>imdb link</label>    
- 		<%= text_field 'movie', 'imdb_link' %>  
-  	</p>
-	<p>
- 		<label>media type</label>    
- 		<%= select('movie', 'media_type', [["movie", :movie], ["series", :series]])%>
-  	</p>
-	<p>
-		<label>disc type</label>
-		<%= select('movie', 'disc_type', [["dvd", :dvd], ["bluray", :bluray]])%>
-	</p>
-	<p>
- 		<label>parental rating</label>    
- 		<%= select('movie', 'parental_rating', [["usk 18", 18], ["usk 16", 16], ["usk 12", 12], ["usk 6", 6], ["usk ohne", 0]])%>
-  	</p>
-	<p>
-   		<button type="submit">Create Movie</button>       
-   	</p>
-	<p>
-   		<%= link_to 'Cancel', movies_path %>
-	</p>
-</fieldset>
-<% end %>
+<%= render :partial => "form", :locals => { :title => 'new movie' } %>

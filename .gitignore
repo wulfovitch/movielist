@@ -6,3 +6,6 @@ doc/app
 
 # we dont wanna have an database.yml in the repository
 config/database.yml
+
+# we don't want to keep track of the uploaded images
+public/uploads/photos/**/*
