@@ -21,12 +21,11 @@
 	<div id="main">
 		
 		<div id="header">
-			<h1>movie list</h1>
+			<h1><%= link_to 'movie list', home_url %></h1>
 		</div>
 		
 		<div id="menu">
 			<ul>
-				<li <%# is_active?("home") %>><%= link_to "Home", home_url %></li>
 				<% if logged? %>
 					<li><%= link_to 'new movie', new_movie_url %></li>
 					<li><%= link_to 'logout [' + User.find_by_id(session[:user_id]).username + ']', logout_path %></li>

@@ -30,13 +30,21 @@ text-transform: uppercase;
 margin-bottom: 0.666666em;
 }
 
+h1 a, h1 a:visited  {
+	color: #000;
+	text-decoration: none;
+}
+h1 a:hover {
+	color: #000;
+	text-decoration: underline;	
+}
+
 h2 {
-font-size: 1.5em;
+font-size: 1.8em;
 }
 
 h3 {
-font-size: 1.2em;
-margin-bottom: -1.5em;
+font-size: 1.5em;
 }
 
 p, ul {
@@ -68,6 +76,7 @@ display: block;
 }
 #menu ul {
 	padding : 0.0em 0em;
+	text-align: right;
 }
 #menu li {
 	display : inline;
