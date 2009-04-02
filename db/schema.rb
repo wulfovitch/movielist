@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090401202959) do
+ActiveRecord::Schema.define(:version => 20090402193142) do
+
+  create_table "collections", :force => true do |t|
+    t.string   "collection_title",          :null => false
+    t.string   "collection_original_title"
+    t.datetime "created_at"
+  end
 
   create_table "movies", :force => true do |t|
     t.string   "movie_title",          :null => false
@@ -20,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20090401202959) do
     t.string   "media_type"
     t.string   "disc_type"
     t.string   "parental_rating"
+    t.integer  "collection_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"

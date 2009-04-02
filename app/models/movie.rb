@@ -1,6 +1,7 @@
 class Movie < ActiveRecord::Base
   
   belongs_to :user
+  belongs_to :collection
   
   has_attached_file :photo, :styles => { :original => "300x300>", :thumb => "100x100>" },
                     :url => "/uploads/photos/:id_:style.:extension",

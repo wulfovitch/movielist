@@ -9,6 +9,7 @@ class CreateMovies < ActiveRecord::Migration
       t.string :media_type # movie / series etc.
       t.string :disc_type # dvd / bluray / hd-dvd etc.
       t.string :parental_rating # fsk rating etc.
+      t.integer :collection_id # if the medium belongs to a collection
     end
   end
 

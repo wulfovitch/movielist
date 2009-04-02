@@ -31,6 +31,16 @@
 		<%= f.file_field :photo %>
 	</p>
 	<p>
+		<span class="multiple_textfields">
+			<label>Select collection</label>
+			<%= select :collection, :collection, @collections.collect{ |p| [p.collection_title, p.id] }, :selected => @movie.collection %>
+		</span>
+		<span class="multiple_textfields">
+			<label>Or create a new collection?</label>
+			<%= text_field :collection, :new_collection %>			
+		</span>
+	</p>	
+	<p>
 		<%= f.submit 'Submit' %>
 	</p>
 	<p>
