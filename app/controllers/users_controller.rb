@@ -13,18 +13,18 @@ class UsersController < ApplicationController
           session[:user_id] = @user.id
           redirect_to movies_url
         else
-          flash[:error] = "Falsche Logindaten"
+          flash[:error] = "You have entered wrong login data!"
           redirect_to home_url
         end
       else
-        #redirect_to :controller => 'welcome', :action => 'index'
+        #redirect_to home_url
       end
     end 
   end
   
   def logout
     session[:user_id] = nil
-    flash[:notice] = "Du bist nun ausgeloggt"
+    flash[:notice] = "You are now logged off!"
     redirect_to home_url
   end
   

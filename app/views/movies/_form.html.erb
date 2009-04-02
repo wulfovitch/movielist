@@ -3,31 +3,31 @@
 <fieldset>    
 	<legend><%= title %></legend>
 	<p>
-		<%= f.label :movie_title %>   
+		<%= f.label :movie_title %>
 		<%= f.text_field :movie_title %>
 	</p>
 	<p>
-		<%= f.label :movie_original_title %>  
+		<%= f.label :movie_original_title %>
 		<%= f.text_field :movie_original_title %>
 	</p>
 	<p>
-		<%= f.label :imdb_link %>     
-		<%= f.text_field :imdb_link %>  
+		<%= f.label :imdb_link %>
+		<%= f.text_field :imdb_link %>
 		</p>
 	<p>
-		<%= f.label :media_type %>    
+		<%= f.label :media_type %>
 		<%= f.select(:media_type, [[@movie.media_type, @movie.media_type], ["movie", :movie], ["series", :series]])%>
 		</p>
 	<p>
-		<%= f.label :disc_type %>  
+		<%= f.label :disc_type %>
 		<%= f.select(:disc_type, [[@movie.disc_type, @movie.disc_type], ["dvd", :dvd], ["bluray", :bluray]])%>
 	</p>
 	<p>
-		<%= f.label :parental_rating %>     
+		<%= f.label :parental_rating %>
 		<%= f.select(:parental_rating, [[@movie.parental_rating, @movie.parental_rating], ["usk 18", 18], ["usk 16", 16], ["usk 12", 12], ["usk 6", 6], ["usk ohne", 0]])%>
 	</p>
 	<p>
-		<%= f.label :photo %> 
+		<%= f.label :photo %>
 		<%= f.file_field :photo %>
 	</p>
 	<p>

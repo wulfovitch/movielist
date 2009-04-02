@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
       user = User.find_by_id session[:user_id]
       @movie.user_id = user.id
       @movie.save!
-      flash[:notice] = 'movie successfully created!' + session[:user_id].to_s + ' '
+      flash[:notice] = 'Movie successfully created!' + session[:user_id].to_s + ' '
     end
     redirect_to movies_path
   end  
@@ -35,7 +35,7 @@ class MoviesController < ApplicationController
   def update      
     @movie = Movie.find(params[:id])      
     if @movie.update_attributes(params[:movie])
-      flash[:notice] = 'movie successfully edited'
+      flash[:notice] = 'Movie successfully edited!'
     end 
     redirect_to movie_path     
   end
@@ -44,6 +44,7 @@ class MoviesController < ApplicationController
     if logged?
       @movie_to_destroy = Movie.find(params[:id])
       @movie_to_destroy.destroy
+      flash[:notice] = 'Movie successfully deleted!'
     end
     redirect_to movies_path
   end

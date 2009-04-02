@@ -24,31 +24,33 @@
 			<h1><%= link_to image_tag('/images/movie.png') + ' movie list', home_url %></h1>
 		</div>
 		
+		<% if logged? -%>
 		<div id="menu">
 			<ul>
-				<% if logged? %>
 					<li><%= link_to 'new movie', new_movie_url %></li>
 					<li><%= link_to 'logout [' + User.find_by_id(session[:user_id]).username + ']', logout_path %></li>
-				<% end %>
 			</ul>
 		</div>
+		<% end -%>
 		
 		<div id="content">
+			<% if flash[:error] || flash[:notice] -%>
 		  <div id="messages">
-	        <% if flash[:error] -%>
-	          <div id="error"><%= flash[:error] %></div>
-	          <div style="clear:both;"></div>
-	        <% end %> 
-	        <% if flash[:notice] -%>
-	          <div id="notice"><%= flash[:notice] %></div>
-	          <div style="clear:both;"></div>
-	        <% end %>   
-	      </div>	
+				<% if flash[:error] -%>
+					<div id="error"><%= flash[:error] %></div>
+					<div style="clear:both;"></div>
+				<% end -%> 
+				<% if flash[:notice] -%>
+					<div id="notice"><%= flash[:notice] %></div>
+					<div style="clear:both;"></div>
+				<% end -%>   
+			</div>	
+			<% end -%>
 			
-	      <div class="yield_content">
-	        <%= yield %>
-	        <div style="clear: both;"></div>
-	      </div>
+			<div class="yield_content">
+				<%= yield %>
+				<div style="clear: both;"></div>
+			</div>
 		</div>
 		
 		<div id="footer">

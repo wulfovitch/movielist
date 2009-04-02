@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
   def authorize
     user = User.find_by_id(session[:user_id])
     unless user
-      flash[:notice] = "Du bist nicht eingeloggt"
-      redirect_to :controller => "welcome"
+      flash[:error] = "You are not logged in! Please log in to continue!"
+      redirect_to home_url
     else
       
     end
