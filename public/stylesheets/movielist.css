@@ -167,6 +167,17 @@ form legend {
 	font-size: 1.2em;
 }
 
+form .multiple_textfields {
+    float: left;
+    padding-right: 15px;
+	padding-bottom: 20px;
+	margin-top: 0px;
+}
+
+form p {
+    clear: both;
+}
+
 /****
 	ERRORS / NOTICES
  */
