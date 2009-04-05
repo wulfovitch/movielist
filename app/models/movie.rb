@@ -13,6 +13,22 @@ class Movie < ActiveRecord::Base
   
   def to_param 
     "#{id}-#{movie_title.gsub(/[^a-z1-9]+/i, '-')}" 
-  end  
+  end
+  
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['movie_title OR movie_original_title LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+  
+  def collection_name
+    collection.collection_title if collection
+  end
+
+  def collection_name=(name)
+    self.collection = Collection.find_or_create_by_collection_title(name) unless name.blank?
+  end
   
 end

@@ -31,15 +31,9 @@
 		<%= f.file_field :photo %>
 	</p>
 	<p>
-		<span class="multiple_textfields">
-			<label>Select collection</label>
-			<%= select :collection, :collection, @collections.collect{ |p| [p.collection_title, p.id] }, :selected => @movie.collection %>
-		</span>
-		<span class="multiple_textfields">
-			<label>Or create a new collection?</label>
-			<%= text_field :collection, :new_collection %>			
-		</span>
-	</p>	
+	  <%= f.label :collection_name %>
+	  <%= text_field_with_auto_complete :movie, :collection_name, { :size => 15 }, { :url => formatted_collections_path(:js), :method => :get, :param_name => 'search' } %>
+	</p>
 	<p>
 		<%= f.submit 'Submit' %>
 	</p>
