@@ -10,24 +10,31 @@ font-size: 62.5%;
 font-family: 'Lucida Grande', 'Lucida Sans Unicode', Lucida, Arial, Helvetica, sans-serif;
 color: #111111;
 line-height: 1.8em;
-margin: 3em;
+margin-left: 3em;
+margin-right: 3em;
+margin-bottom: 2em;
+margin-top: 2em;
 }
 
-#wrapper {
-width: 50em;
-margin: 3.6em auto;
-background: url(baseline.gif);
+a:link, a:visited, a:active {
+    color: black;
+    text-decoration:none;
+}
+
+a:hover{
+    color:  black;
+    text-decoration: underline;
 }
 
 h1, h2 {
-color: #222222;
+	color: #222222;
 }
 
 h1 {
-font-size: 2.7em;
-font-weight: normal;
-text-transform: uppercase;
-margin-bottom: 0.666666em;
+	font-size: 2.7em;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin-bottom: 0.666666em;
 }
 
 h1 a, h1 a:visited  {
@@ -41,16 +48,18 @@ h1 a:hover {
 }
 
 h2 {
-font-size: 1.8em;
+	font-size: 1.8em;
+	padding: 0 0 0.5em 0;
 }
 
 h3 {
-font-size: 1.5em;
+	font-size: 1.5em;
+	padding: 0 0 0.5em 0;
 }
 
 p, ul {
-font-size: 1.2em;
-margin: 0 0 1.5em 0;
+	font-size: 1.2em;
+	margin: 0 0 0.5em 0;
 }
 
 blockquote {
@@ -141,6 +150,54 @@ table {
 th {
 	text-align: left;
 	border-bottom: 1px solid #000;
+	font-weight: normal;
+}
+
+/****
+	TABLES (SORTABLE) - see: http://yoast.com/articles/sortable-table/
+ */
+table.sortable {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+table.sortable th, table.sortable td {
+	text-align: left;
+}
+table.sortable th {
+	color: #fff;
+	background-color: #437fda;
+}
+table.sortable th a {
+	font-weight: normal;
+	color: #fff;
+	display: block;
+}
+table.sortable th:hover {
+	font-weight: normal;
+	color: #fff;
+	text-decoration: none;
+}
+table.sortable th a:hover {
+	font-weight: normal;
+	color: #fff;
+	background-color: #2b548c;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+table.sortable td {
+	border-width: 0px 1px 0px 1px;
+}
+table.sortable tr.odd td {
+	background-color: #e9efff;
+}
+table.sortable tr.even td {
+	background-color: #fff;
+}
+table.sortable tr.sortbottom td {
+	border-top: 1px solid #444;
+	background-color: #ccc;
+	font-weight: bold;
 }
 
 /****

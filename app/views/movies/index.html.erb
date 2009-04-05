@@ -1,3 +1,5 @@
+<%= javascript 'sortable'  %>
+<%= stylesheet 'example'  %>
 <% title "movie list" %>
 
 <h2>
@@ -5,12 +7,12 @@
 </h2>
 
 <% @movies_users.sort.each do |user, movies| %>
-  <h3><%= user %></h3>
-	<table width="100%">
+  <h3><%= user %> (<%= movies.length %>)</h3>
+	<table width="100%" class="sortable" id="sortabletable_<%= user %>">
 		<tr>
       <th>movie title</th>
 			<th>movie original title</th>
-			<th>imdb link</th>
+			<th class="unsortable">imdb link</th>
 			<th>bought at</th>
 			<th>media type</th>
 			<th>disc type</th>
@@ -21,7 +23,7 @@
       <td><%= link_to movie.movie_title, movie_url(movie) %></td>
 			<td><%= movie.movie_original_title %></td>
 			<td><%= link_to "imdb link", movie.imdb_link %></td>
-			<td><%= movie.created_at.strftime("%d.%m.%Y") %></td>
+			<td><%= movie.created_at.strftime('%Y-%m-%d') %></td>
 			<td><%= movie.media_type %></td>
 			<td><%= movie.disc_type %></td>
 			<td><%= movie.parental_rating %></td>

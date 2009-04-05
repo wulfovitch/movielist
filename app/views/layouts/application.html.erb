@@ -3,19 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>movie list - <%= yield(:title) || 'movie list' %></title>
-	<%= stylesheet_link_tag "movielist" %>
-	
-	<style type="text/css" media="screen">
-	/* <![CDATA[ */
-	/* IE only 
-	ul {
-	padding-left: 1.5em;
-	position: relative;
-	left: -1.5em;
-	}*/
-	/* ]]> */
-	</style>
+	<%= stylesheet 'movielist' %>
 	<%= javascript_include_tag :defaults %>
+	<%= yield(:head) %>
+	
+	<style type="text/css">
+ .tabelle2 td a { display:block; width:100%; }
+
+	</style>
 </head>
 
 <body>
