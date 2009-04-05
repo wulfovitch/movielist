@@ -12,7 +12,7 @@ class Movie < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
   
   def to_param 
-    "#{id}-#{movie_title.gsub(/[^a-z1-9]+/i, '-')}" 
+    "#{id}-#{movie_title.downcase.gsub(/[^a-z1-9]+/i, '-')}" 
   end
   
   def self.search(search)

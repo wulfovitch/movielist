@@ -1,5 +1,4 @@
-<%= javascript 'sortable'  %>
-<%= stylesheet 'example'  %>
+<%= javascript 'sortable' %>
 <% title "movie list" %>
 
 <h2>
@@ -10,9 +9,9 @@
 	<%= link_to 'toggle grouped user view', togglegroupedview_url %>
 </p>
 
-<% if @user.show_grouped_by_user == true %>
+<%- if @user.show_grouped_by_user == true -%>
 
-	<% @movies_users.sort.each do |user, movies| %>
+	<%- @movies_users.sort.each do |user, movies| -%>
 	  <h3><%= user %> (<%= movies.length %>)</h3>
 		<table width="100%" class="sortable" id="sortabletable_<%= user %>">
 			<tr>
@@ -24,7 +23,7 @@
 				<th>disc type</th>
 				<th>parental rating</th>
 	    </tr>
-	  <% for movie in movies %>
+	  <%- for movie in movies -%>
 	    <tr>
 	      <td><%= link_to movie.movie_title, movie_url(movie) %></td>
 				<td><%= movie.movie_original_title %></td>
@@ -34,12 +33,12 @@
 				<td><%= movie.disc_type %></td>
 				<td><%= movie.parental_rating %></td>
 	    </tr>
-	  <% end %>
+	  <%- end -%>
 		</table>
 	  <br />
-	<% end %>
+	<%- end -%>
 	
-<% else %>
+<%- else -%>
 
 	<h3>All movies (<%= @movies.length %>)</h3>
 	<table width="100%" class="sortable" id="sortabletable">
@@ -53,7 +52,7 @@
 			<th>parental rating</th>
 			<th>owner</th>
 	  </tr>
-	<% for movie in @movies %>
+	<%- for movie in @movies -%>
     <tr>
       <td><%= link_to movie.movie_title, movie_url(movie) %></td>
 			<td><%= movie.movie_original_title %></td>
@@ -64,7 +63,7 @@
 			<td><%= movie.parental_rating %></td>
 			<td><%= movie.user.realname %></td>
     </tr>
-  <% end %>
+  <%- end -%>
 	</table>
   <br />
-<% end %>
+<%- end -%>
