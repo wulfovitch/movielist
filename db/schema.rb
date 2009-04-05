@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090402193142) do
+ActiveRecord::Schema.define(:version => 20090405152809) do
 
   create_table "collections", :force => true do |t|
     t.string   "collection_title",          :null => false
@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(:version => 20090402193142) do
   end
 
   create_table "users", :force => true do |t|
-    t.string "username"
-    t.string "realname"
-    t.string "hashed_password"
+    t.string  "username"
+    t.string  "realname"
+    t.string  "hashed_password"
+    t.boolean "show_grouped_by_user"
   end
 
 end

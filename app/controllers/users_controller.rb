@@ -31,5 +31,16 @@ class UsersController < ApplicationController
   def start
     @user = User.find_by_id session[:user_id]  
   end
+  
+  def togglegroupedview
+    @user = User.find_by_id session[:user_id]
+    if @user.show_grouped_by_user
+      @user.show_grouped_by_user = false
+    else
+      @user.show_grouped_by_user = true
+    end
+    @user.save!
+    redirect_to movies_url
+  end
 
 end

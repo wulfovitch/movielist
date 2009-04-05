@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
   before_filter :authorize
   
   def index
+    @user = User.find_by_id session[:user_id]
     @movies = Movie.search(params[:search])
     @movies_users = @movies.group_by { |m| m.user.realname }
   end
