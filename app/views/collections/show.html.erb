@@ -1,0 +1,15 @@
+<%- title "movies" -%>
+<br />
+<h1>
+	<%= image_tag '/images/icon_dvds.png' %> <%= @collection.collection_title %>
+</h1>
+
+<%- unless @movies.nil? -%>
+
+	<% for movie in @movies %>
+
+		<%= show_movie movie %>
+	
+	<% end %>
+
+<%- end -%>

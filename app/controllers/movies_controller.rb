@@ -2,6 +2,8 @@ class MoviesController < ApplicationController
   
   before_filter :authorize
   
+  helper :movies_render  
+  
   def index
     @user = User.find_by_id session[:user_id]
     @movies = Movie.search(params[:search])
@@ -14,7 +16,7 @@ class MoviesController < ApplicationController
       end
     end
     collection_ids.uniq!
-    
+
     for movie in @movies
       unless movie.collection_id.nil?
         if collection_ids.include? movie.collection_id 
@@ -24,9 +26,9 @@ class MoviesController < ApplicationController
         end
       end
     end
-    
+
     for movie in movies_to_be_removed
-      @movies.delete(movie)
+     @movies.delete(movie)
     end
     
     @movies_users = @movies.group_by { |m| m.user.realname }
@@ -35,9 +37,6 @@ class MoviesController < ApplicationController
   def show
     movie_id = params[:id].to_i
     @movie = Movie.find(movie_id)
-    unless @movie.collection_id.nil?
-      @movies = Movie.find_all_by_collection_id(@movie.collection_id)
-    end
   end
   
   def new
@@ -51,7 +50,7 @@ class MoviesController < ApplicationController
     user = User.find_by_id session[:user_id]
     @movie.user_id = user.id
     @movie.save!
-    flash[:notice] = 'Movie successfully created!' + session[:user_id].to_s + ' '
+    flash[:notice] = 'Movie successfully created!'
     redirect_to movies_path
   end  
   

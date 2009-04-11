@@ -1,15 +1,3 @@
 <%- title "movie" -%>
 
-<%- unless @movies.nil? -%>
-
-	<% for movie in @movies %>
-
-		<%= show_movie movie %>
-	
-	<% end %>
-
-<%- else -%>
-
-	<%= show_movie @movie %>
-
-<%- end -%>
+<%= show_movie @movie %>

@@ -37,7 +37,7 @@
 					<% if movie.collection_id.nil? %>
 						<%= link_to movie.movie_title, movie_url(movie) %>
 					<% else %>
-						<%= link_to movie.collection.collection_title, movie_url(movie) %>
+						<%= link_to movie.collection.collection_title, collection_url(movie.collection) %>
 					<% end%>
 				</td>
 				<td>
@@ -86,8 +86,8 @@
 				<% if movie.collection_id.nil? %>
 					<%= link_to movie.movie_title, movie_url(movie) %>
 				<% else %>
-					<%= link_to movie.collection.collection_title, movie_url(movie) %>
-				<% end %>
+					<%= link_to movie.collection.collection_title, collection_url(movie.collection) %>
+				<% end%>
 			</td>
 			<td>
 				<% if movie.collection_id.nil? %>

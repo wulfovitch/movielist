@@ -18,8 +18,14 @@ class Movie < ActiveRecord::Base
   def self.search(search)
     if search
       find(:all, :conditions => ['movie_title OR movie_original_title LIKE ?', "%#{search}%"])
+      #find_by_sql(['SELECT distinct * FROM movies as m, collections as c
+      #              WHERE (m.collection_id IS NULL
+      #              OR m.collection_id = c.id)
+      #              AND (m.movie_title OR m.movie_original_title OR c.collection_title LIKE ?)
+      #              GROUP BY m.movie_title, c.collection_title', "%#{search}%"])
     else
       find(:all)
+      #find_by_sql(['SELECT distinct * FROM movies as m, collections as c WHERE m.collection_id IS NULL OR m.collection_id = c.id GROUP BY m.movie_title'])
     end
   end
   
