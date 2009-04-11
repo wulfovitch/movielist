@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20090405152809) do
     t.string  "username"
     t.string  "realname"
     t.string  "hashed_password"
-    t.boolean "show_grouped_by_user"
+    t.boolean "show_grouped_by_user", :default => false
   end
 
 end

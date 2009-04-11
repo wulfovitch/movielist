@@ -1,5 +1,5 @@
 <%= javascript 'sortable' %>
-<% title "movie list" %>
+<% title "index" %>
 
 <h2>
 	Movie List
@@ -15,8 +15,9 @@
 	  <h3><%= user %> (<%= movies.length %>)</h3>
 		<table width="100%" class="sortable" id="sortabletable_<%= user %>">
 			<tr>
-	      <th>movie title</th>
-				<th>movie original title</th>
+				<th>&nbsp;</th>
+	      <th>title</th>
+				<th>original title</th>
 				<th class="unsortable">imdb link</th>
 				<th>bought at</th>
 				<th>media type</th>
@@ -25,8 +26,27 @@
 	    </tr>
 	  <%- for movie in movies -%>
 	    <tr>
-	      <td><%= link_to movie.movie_title, movie_url(movie) %></td>
-				<td><%= movie.movie_original_title %></td>
+				<td>
+					<% if movie.collection_id.nil? %>
+						<%= image_tag '/images/icon_dvd.png' %>
+					<% else %>
+						<%= image_tag '/images/icon_dvds.png' %>
+					<% end %>
+				</td>
+	      <td>
+					<% if movie.collection_id.nil? %>
+						<%= link_to movie.movie_title, movie_url(movie) %>
+					<% else %>
+						<%= link_to movie.collection.collection_title, movie_url(movie) %>
+					<% end%>
+				</td>
+				<td>
+					<% if movie.collection_id.nil? %>
+						<%= link_to movie.movie_original_title, movie_url(movie) %>
+					<% else %>
+						<i><%= movie.collection.collection_original_title %></i>
+					<% end %>
+				</td>
 				<td><%= link_to "imdb link", movie.imdb_link %></td>
 				<td><%= movie.created_at.strftime('%Y-%m-%d') %></td>
 				<td><%= movie.media_type %></td>
@@ -43,8 +63,9 @@
 	<h3>All movies (<%= @movies.length %>)</h3>
 	<table width="100%" class="sortable" id="sortabletable">
 		<tr>
-	    <th>movie title</th>
-			<th>movie original title</th>
+			<th>&nbsp;</th>
+	    <th>title</th>
+			<th>original title</th>
 			<th class="unsortable">imdb link</th>
 			<th>bought at</th>
 			<th>media type</th>
@@ -54,8 +75,27 @@
 	  </tr>
 	<%- for movie in @movies -%>
     <tr>
-      <td><%= link_to movie.movie_title, movie_url(movie) %></td>
-			<td><%= movie.movie_original_title %></td>
+			<td>
+				<% if movie.collection_id.nil? %>
+					<%= image_tag '/images/icon_dvd.png' %>
+				<% else %>
+					<%= image_tag '/images/icon_dvds.png' %>
+				<% end %>
+			</td>
+      <td>
+				<% if movie.collection_id.nil? %>
+					<%= link_to movie.movie_title, movie_url(movie) %>
+				<% else %>
+					<%= link_to movie.collection.collection_title, movie_url(movie) %>
+				<% end %>
+			</td>
+			<td>
+				<% if movie.collection_id.nil? %>
+					<%= link_to movie.movie_original_title, movie_url(movie) %>
+				<% else %>
+					<i><%= movie.collection.collection_original_title %></i>
+				<% end %>
+			</td>
 			<td><%= link_to "imdb link", movie.imdb_link %></td>
 			<td><%= movie.created_at.strftime('%Y-%m-%d') %></td>
 			<td><%= movie.media_type %></td>

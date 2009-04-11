@@ -1,24 +1,15 @@
-<%- title @movie.movie_title -%>
+<%- title "movie" -%>
 
-<h2>
-	<%= link_to @movie.movie_title, movie_url(@movie) %>
-</h2>
+<%- unless @movies.nil? -%>
 
-<p>
-	<%= image_tag @movie.photo.url %>
-</p>
+	<% for movie in @movies %>
 
-<p>
-	Bought <strong><%= @movie.disc_type %></strong> at: <%= @movie.created_at.strftime("%d.%m.%Y") %>
-	| <%= link_to "edit", edit_movie_path(@movie) %> | <%= link_to "delete", movie_path(@movie), { :method => 'delete', :confirm => 'really delete this movie?' } %>
-</p>
+		<%= show_movie movie %>
+	
+	<% end %>
 
-<p>
-	<%= link_to 'imdb link', @movie.imdb_link %> / <%= @movie.media_type %> / parental rating: <%= @movie.parental_rating %>
-</p>
+<%- else -%>
 
-<p>
-	<%= @movie.user.username %> (<%= @movie.user.realname %>)
-</p>
+	<%= show_movie @movie %>
 
-<br />
+<%- end -%>
