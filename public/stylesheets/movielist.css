@@ -56,7 +56,7 @@ h2 {
 
 h3 {
 	font-size: 1.8em;
-	padding: 0 0 0.5em 0;
+	padding: 0 0 0.2em 0;
 }
 
 h4 {
@@ -89,8 +89,11 @@ img {
 
 
 .movie_seperator_line {
-	border: 1px solid #000;
-	margin-bottom: 6px;
+	border: 0px;
+	background-color: #000; /* color for opera and firefox */ 
+	color: #000; /* color for IE */
+	height: 1px;
+	margin-bottom: 5px;
 }
 
 .movie_picture {
