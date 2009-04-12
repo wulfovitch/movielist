@@ -12,98 +12,13 @@
 <%- if @user.show_grouped_by_user == true -%>
 
 	<%- @movies_users.sort.each do |user, movies| -%>
-	  <h4><%= user %> (<%= movies.length %>)</h4>
-		<table width="100%" class="sortable" id="sortabletable_<%= user %>">
-			<tr>
-				<th class="unsortable">&nbsp;</th>
-	      <th>title</th>
-				<th>original title</th>
-				<th class="unsortable">imdb link</th>
-				<th>bought at</th>
-				<th>media type</th>
-				<th>disc type</th>
-				<th>parental rating</th>
-	    </tr>
-	  <%- for movie in movies -%>
-	    <tr>
-				<td>
-					<% if movie.collection_id.nil? %>
-						<%= image_tag '/images/icon_dvd.png' %>
-					<% else %>
-						<%= image_tag '/images/icon_dvds.png' %>
-					<% end %>
-				</td>
-	      <td>
-					<% if movie.collection_id.nil? %>
-						<%= link_to movie.movie_title, movie_url(movie) %>
-					<% else %>
-						<%= link_to movie.collection.collection_title, collection_url(movie.collection) %>
-					<% end%>
-				</td>
-				<td>
-					<% if movie.collection_id.nil? %>
-						<i><%= link_to movie.movie_original_title, movie_url(movie) %></i>
-					<% else %>
-						<i><%= movie.collection.collection_original_title %></i>
-					<% end %>
-				</td>
-				<td><%= link_to "imdb link", movie.imdb_link %></td>
-				<td><%= movie.created_at.strftime('%Y-%m-%d') %></td>
-				<td><%= movie.media_type %></td>
-				<td><%= movie.disc_type %></td>
-				<td><%= movie.parental_rating %></td>
-	    </tr>
-	  <%- end -%>
-		</table>
-	  <br />
+	
+		<%= index_table user, movies, @user.show_grouped_by_user %>
+	
 	<%- end -%>
 	
 <%- else -%>
 
-	<h4>All movies (<%= @movies.length %>)</h4>
-	<table width="100%" class="sortable" id="sortabletable">
-		<tr>
-			<th class="unsortable">&nbsp;</th>
-	    <th>title</th>
-			<th>original title</th>
-			<th class="unsortable">imdb link</th>
-			<th>bought at</th>
-			<th>media type</th>
-			<th>disc type</th>
-			<th>parental rating</th>
-			<th>owner</th>
-	  </tr>
-	<%- for movie in @movies -%>
-    <tr>
-			<td>
-				<% if movie.collection_id.nil? %>
-					<%= image_tag '/images/icon_dvd.png' %>
-				<% else %>
-					<%= image_tag '/images/icon_dvds.png' %>
-				<% end %>
-			</td>
-      <td>
-				<% if movie.collection_id.nil? %>
-					<%= link_to movie.movie_title, movie_url(movie) %>
-				<% else %>
-					<%= link_to movie.collection.collection_title, collection_url(movie.collection) %>
-				<% end%>
-			</td>
-			<td>
-				<% if movie.collection_id.nil? %>
-					<i><%= link_to movie.movie_original_title, movie_url(movie) %></i>
-				<% else %>
-					<i><%= movie.collection.collection_original_title %></i>
-				<% end %>
-			</td>
-			<td><%= link_to "imdb link", movie.imdb_link %></td>
-			<td><%= movie.created_at.strftime('%Y-%m-%d') %></td>
-			<td><%= movie.media_type %></td>
-			<td><%= movie.disc_type %></td>
-			<td><%= movie.parental_rating %></td>
-			<td><%= movie.user.realname %></td>
-    </tr>
-  <%- end -%>
-	</table>
-  <br />
+	<%= index_table "All movies", @movies, @user.show_grouped_by_user %>
+
 <%- end -%>

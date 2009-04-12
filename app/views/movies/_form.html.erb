@@ -5,22 +5,6 @@
 
 <% form_for @movie, :html => { :multipart => true } do |f| %>    
 
-<script type="text/javascript">
-<!-- //
-
-	function datechooser_function(objDate)
-	{
-		var ndExample5 = document.getElementById('movie_created_at');
-		ndExample5.DateChooser.setEarliestDate(objDate);
-		ndExample5.DateChooser.updateFields();
-
-		return true;
-	}
-
-// -->
-</script>
-
-
 <fieldset>    
 	<legend><%= title %></legend>
 	<p>
@@ -32,11 +16,8 @@
 		<%= f.text_field :movie_original_title %>
 	</p>
 	<p>
-		<%= f.label :created_at, 'Date of purchase' %>
-		<% unless @movie.created_at.nil? %>
-			<% movie_created = @movie.created_at.strftime("%Y-%m-%d")%>
-		<% end%>
-		<input id="movie_created_at" name="movie[created_at]" class="datechooser dc-dateformat='Y-m-d' dc-iconlink='/images/datechooser.png' dc-weekstartday='1' dc-startdate='<%= Time.now.strftime("%m%d%Y") %>' dc-latestdate='12312009' dc-earliestdate='01012000' dc-onupdate='datechooser_function'" type="text" value="<%= movie_created %>">	
+		<%= f.label :created_at, 'Purchase date' %>
+		<%= datechooser_input_field @movie %>
 	</p>
 	<p>
 		<%= f.label :imdb_link %>
