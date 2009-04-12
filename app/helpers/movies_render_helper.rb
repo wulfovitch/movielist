@@ -1,13 +1,13 @@
 module MoviesRenderHelper 
   
-  def show_movie movie
+  def show_movie movie, collection_link = nil
     
-    return_string = "<h2>"
+    return_string = "<h3>"
   	return_string +=	 link_to movie.movie_title, movie_url(movie) 
-  	return_string += "</h2>"
-  	return_string += "<hr style='border: 1px solid #000; margin-bottom: 6px;' />"
+  	return_string += "</h3>"
+  	return_string += "<hr class='movie_seperator_line' />"
     
-    return_string += "<p style='float: left; margin-right: 10px; margin-bottom: 20px; width: 310px;'>"
+    return_string += "<p class='movie_picture'>"
   	return_string +=	 link_to image_tag(movie.photo.url), movie.imdb_link
   	return_string += "</p>"
   	
@@ -16,7 +16,7 @@ module MoviesRenderHelper
   	return_string += "</p>"
 
   	return_string += "<p>"
-  	return_string += "" + movie.created_at.strftime("%d.%m.%Y") + " - " + movie.user.realname
+  	return_string += "" + movie.created_at.strftime("%Y-%m-%d") + " - " + movie.user.realname
   	return_string += "</p>"
   	
   	unless movie.disc_type == ''
@@ -30,13 +30,17 @@ module MoviesRenderHelper
     	return_string +=	 "media type: " + movie.media_type
     	return_string += "</p>"
     end
-    
-   
   	
   	unless movie.parental_rating == ''
   	  return_string += "<p>"
   	  return_string +=	  "parental rating: " + movie.parental_rating
   	  return_string += "</p>"
+	  end
+	  
+	  unless collection_link.nil?
+	    return_string += "<p>"
+	    return_string += "collection: " + link_to(movie.collection.collection_title, collection_url(movie.collection)) + image_tag('/images/icon_dvds.png')
+	    return_string += "</p>"
 	  end
 	  
   	return_string += "<div style='clear: both;'></div>"

@@ -1,5 +1,7 @@
 class Movie < ActiveRecord::Base
   
+  validates_presence_of :movie_title
+  
   belongs_to :user
   belongs_to :collection
   

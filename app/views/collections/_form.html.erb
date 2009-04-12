@@ -1,0 +1,20 @@
+<% form_for @collection, :html => { :multipart => true } do |f| %>    
+
+<fieldset>    
+	<legend><%= title %></legend>
+	<p>
+		<%= f.label :collection_title %>
+		<%= f.text_field :collection_title %>
+	</p>
+	<p>
+		<%= f.label :collection_original_title %>
+		<%= f.text_field :collection_original_title %>
+	</p>
+	<p>
+		<%= f.submit 'Submit' %>
+	</p>
+	<p>
+	 		<%= link_to 'Cancel', movies_path %>
+	</p>
+</fieldset>
+<% end %>

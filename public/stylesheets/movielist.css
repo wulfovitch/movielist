@@ -48,13 +48,20 @@ h1 a:hover {
 }
 
 h2 {
+	font-size: 2.3em;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin-bottom: 0.666666em;
+}
+
+h3 {
 	font-size: 1.8em;
 	padding: 0 0 0.5em 0;
 }
 
-h3 {
+h4 {
 	font-size: 1.5em;
-	padding: 0 0 0.5em 0;
+	padding: 0.2em 0 0.5em 0;
 }
 
 p, ul {
@@ -80,6 +87,18 @@ img {
 	border: 0px;
 }
 
+
+.movie_seperator_line {
+	border: 1px solid #000;
+	margin-bottom: 6px;
+}
+
+.movie_picture {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	width: 310px;
+}
 
 /****
 	HEADER

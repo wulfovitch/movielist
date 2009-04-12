@@ -46,12 +46,17 @@ class MoviesController < ApplicationController
   end
   
   def create
-    @movie = Movie.new(params[:movie])
-    user = User.find_by_id session[:user_id]
-    @movie.user_id = user.id
-    @movie.save!
-    flash[:notice] = 'Movie successfully created!'
-    redirect_to movies_path
+    begin
+      @movie = Movie.new(params[:movie])
+      user = User.find_by_id session[:user_id]
+      @movie.user_id = user.id
+      @movie.save!
+      flash[:notice] = 'Movie successfully created!'
+      redirect_to movies_path
+    rescue
+      flash[:error] = 'Fehler beim Erstellen des Accounts!'
+      #  redirect_to :controller => 'welcome', :action => 'register'
+    end
   end  
   
   def edit
@@ -61,7 +66,10 @@ class MoviesController < ApplicationController
   def update
     @movie = Movie.find(params[:id])
     
-    
+    unless params[:movie][:created_at].nil?
+      date_array = params[:movie][:created_at].split("-")
+      @movie.created_at = "#{date_array[2]}-#{date_array[1]}-#{date_array[0]} 00:00:00"
+    end
     
     # collection is changed or deleted
     if params[:movie][:collection_name] == '' || (params[:movie][:collection_name] != '' && @movie.collection_id.nil?) || params[:movie][:collection_name] != @movie.collection.collection_title

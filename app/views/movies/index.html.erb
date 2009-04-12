@@ -1,9 +1,9 @@
 <%= javascript 'sortable' %>
 <% title "index" %>
 
-<h2>
+<h3>
 	Movie List
-</h2>
+</h3>
 
 <p style="float: right;">
 	<%= link_to 'toggle grouped user view', togglegroupedview_url %>
@@ -12,10 +12,10 @@
 <%- if @user.show_grouped_by_user == true -%>
 
 	<%- @movies_users.sort.each do |user, movies| -%>
-	  <h3><%= user %> (<%= movies.length %>)</h3>
+	  <h4><%= user %> (<%= movies.length %>)</h4>
 		<table width="100%" class="sortable" id="sortabletable_<%= user %>">
 			<tr>
-				<th>&nbsp;</th>
+				<th class="unsortable">&nbsp;</th>
 	      <th>title</th>
 				<th>original title</th>
 				<th class="unsortable">imdb link</th>
@@ -42,7 +42,7 @@
 				</td>
 				<td>
 					<% if movie.collection_id.nil? %>
-						<%= link_to movie.movie_original_title, movie_url(movie) %>
+						<i><%= link_to movie.movie_original_title, movie_url(movie) %></i>
 					<% else %>
 						<i><%= movie.collection.collection_original_title %></i>
 					<% end %>
@@ -60,10 +60,10 @@
 	
 <%- else -%>
 
-	<h3>All movies (<%= @movies.length %>)</h3>
+	<h4>All movies (<%= @movies.length %>)</h4>
 	<table width="100%" class="sortable" id="sortabletable">
 		<tr>
-			<th>&nbsp;</th>
+			<th class="unsortable">&nbsp;</th>
 	    <th>title</th>
 			<th>original title</th>
 			<th class="unsortable">imdb link</th>
@@ -91,7 +91,7 @@
 			</td>
 			<td>
 				<% if movie.collection_id.nil? %>
-					<%= link_to movie.movie_original_title, movie_url(movie) %>
+					<i><%= link_to movie.movie_original_title, movie_url(movie) %></i>
 				<% else %>
 					<i><%= movie.collection.collection_original_title %></i>
 				<% end %>

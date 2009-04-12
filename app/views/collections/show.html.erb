@@ -1,8 +1,7 @@
 <%- title "movies" -%>
-<br />
-<h1>
-	<%= image_tag '/images/icon_dvds.png' %> <%= @collection.collection_title %>
-</h1>
+<h2>
+	<%=image_tag('/images/icon_dvds.png') %> <%= link_to @collection.collection_title, edit_collection_url %>
+</h2>
 
 <%- unless @movies.nil? -%>
 
