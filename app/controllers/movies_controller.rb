@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   
   before_filter :authorize, :except => [:feed]
+  before_filter :http_authenticate, :only => [:feed]
   
   helper :movies_render  
   
@@ -138,9 +139,11 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
   
-  private
-  
-    def show_collections_and_single_movies movies
-      
+  protected
+
+    def http_authenticate
+      authenticate_or_request_with_http_basic do |username, password|
+        @user = User.authenticate(username, password)
+      end
     end
 end
