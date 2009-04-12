@@ -226,12 +226,12 @@ table.sortable tr.sortbottom td {
 	FORM
  */
 
-form p {
+form p, .fieldWithErrors {
 	padding-left: 20px;
 }
 
 
-form label {
+form label, .fieldWithErrors label {
 	color: #114477;
 	font-weight: bold;
 	clear: both;
@@ -249,7 +249,8 @@ form p.input, form p.text {
 form fieldset {
 	background-color: #f5f5f5;
 	border: 1px solid #777;
-	margin-bottom: 15px;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 form legend {
@@ -325,6 +326,13 @@ form p {
     color: black;
 }
 
-.fieldWithErrors {
+.fieldWithErrors label {
+	font-size: 1.3em;
+	color: #ff0000;
+}
+
+.fieldWithErrors input {
+	font-size: 1.3em;
     border: 1px solid red;
 }
+

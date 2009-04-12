@@ -19,13 +19,17 @@ class CollectionsController < ApplicationController
   end 
   
   def update
-    @collection = Collection.find(params[:id])
-    
-    # save the collection
-    if @collection.update_attributes(params[:collection])
+    begin
+      @collection = Collection.find(params[:id])
+      # save the collection
+      @collection.attributes = params[:collection]
+      @collection.save!
       flash[:notice] = 'Collection successfully edited!'
-    end 
-    redirect_to collection_path     
+      redirect_to collection_path 
+    rescue
+      flash[:error] = 'An error occured during the editing of the collection!'
+      render :action => 'edit'     
+    end   
   end
 
 end

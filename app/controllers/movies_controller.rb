@@ -54,8 +54,8 @@ class MoviesController < ApplicationController
       flash[:notice] = 'Movie successfully created!'
       redirect_to movies_path
     rescue
-      flash[:error] = 'Fehler beim Erstellen des Accounts!'
-      #  redirect_to :controller => 'welcome', :action => 'register'
+      flash[:error] = 'An error occured during the creation of the movie!'
+      render :action => 'new'
     end
   end  
   
@@ -64,37 +64,44 @@ class MoviesController < ApplicationController
   end 
   
   def update
-    @movie = Movie.find(params[:id])
+    begin
+      @movie = Movie.find(params[:id])
     
-    unless params[:movie][:created_at].nil?
-      date_array = params[:movie][:created_at].split("-")
-      @movie.created_at = "#{date_array[2]}-#{date_array[1]}-#{date_array[0]} 00:00:00"
-    end
-    
-    # collection is changed or deleted
-    if params[:movie][:collection_name] == '' || (params[:movie][:collection_name] != '' && @movie.collection_id.nil?) || params[:movie][:collection_name] != @movie.collection.collection_title
-      @count_of_collection_referenced = Movie.find_all_by_collection_id(@movie.collection_id)
-      # delete references to the collection, because no movie is referencing it anymore
-      unless @count_of_collection_referenced.length > 1
-        Collection.find_by_id(@movie.collection_id).destroy
+      # a date of purchase was specified
+      unless params[:movie][:created_at].nil?
+        date_array = params[:movie][:created_at].split("-")
+        @movie.created_at = "#{date_array[2]}-#{date_array[1]}-#{date_array[0]} 00:00:00"
       end
-      if params[:movie][:collection_name] == ''
-        @movie.collection_id = nil # delete the reference to the collection
-      elsif params[:movie][:collection_name] != '' && @movie.collection_id.nil?  
-        new_collection = Collection.new(:collection_title => params[:movie][:collection_name])
-        new_collection.save!
-        @movie.collection = new_collection
-        @movie.save!
-      elsif params[:movie][:collection_name] != @movie.collection.collection_title
-        @movie.collection.collection_title = params[:movie][:collection_name] # update collection
-      end
-    end
     
-    # save the movie
-    if @movie.update_attributes(params[:movie])
+      # collection is changed or deleted
+      if params[:movie][:collection_name] == '' || (params[:movie][:collection_name] != '' && @movie.collection_id.nil?) || params[:movie][:collection_name] != @movie.collection.collection_title
+        @count_of_collection_referenced = Movie.find_all_by_collection_id(@movie.collection_id)
+        # delete references to the collection, because no movie is referencing it anymore
+        unless @count_of_collection_referenced.length > 1
+          Collection.find_by_id(@movie.collection_id).destroy
+        end
+        if params[:movie][:collection_name] == ''
+          @movie.collection_id = nil # delete the reference to the collection
+        elsif params[:movie][:collection_name] != '' && @movie.collection_id.nil?  
+          new_collection = Collection.new(:collection_title => params[:movie][:collection_name])
+          new_collection.save!
+          @movie.collection = new_collection
+          @movie.save!
+        elsif params[:movie][:collection_name] != @movie.collection.collection_title
+          @movie.collection.collection_title = params[:movie][:collection_name] # update collection
+        end
+      end
+    
+      # save the movie
+      @movie.attributes = params[:movie]      
+      @movie.save!
+      #@movie.update_attributes(params[:movie])
       flash[:notice] = 'Movie successfully edited!'
-    end 
-    redirect_to movie_path     
+      redirect_to movie_path   
+    rescue
+      flash[:error] = 'An error occured during the editing of the movie!'
+      render :action => 'edit'
+    end  
   end
   
   def destroy

@@ -1,6 +1,8 @@
 <% javascript 'datechooser' %>
 <% stylesheet 'datechooser' %>
 
+<%= error_messages_for :movie %>   
+
 <% form_for @movie, :html => { :multipart => true } do |f| %>    
 
 <script type="text/javascript">
@@ -30,7 +32,7 @@
 		<%= f.text_field :movie_original_title %>
 	</p>
 	<p>
-		<%= f.label :created_at %>
+		<%= f.label :created_at, 'Date of purchase' %>
 		<% unless @movie.created_at.nil? %>
 			<% movie_created = @movie.created_at.strftime("%Y-%m-%d")%>
 		<% end%>

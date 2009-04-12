@@ -1,5 +1,7 @@
 <% form_for @collection, :html => { :multipart => true } do |f| %>    
 
+<%= error_messages_for :collection %>  
+ 
 <fieldset>    
 	<legend><%= title %></legend>
 	<p>
