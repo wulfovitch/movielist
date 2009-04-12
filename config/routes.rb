@@ -36,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
   map.resources :movies
   map.resources :collections, :only => [:index, :show, :edit, :update]
+  map.feed 'feed', :controller => 'movies', :action => 'feed', :format => 'rss'
   map.togglegroupedview 'togglegroupedview', :controller => 'users', :action => 'togglegroupedview'
   map.logout 'logout', :controller => 'users', :action => 'logout'
   map.home '', :controller => 'users', :action => 'login' 
