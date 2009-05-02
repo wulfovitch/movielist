@@ -1,0 +1,16 @@
+movielist
+=========
+
+This is a personal rails project which I and my brother are using for tracking our movies we bought on dvd or bluray.
+
+Installation
+============
+
+You have to run the migrations first. There is no user registration integrated, because this project is a personal project and there was no need to add one. In order an predefined set of users to the database, you have to do the following:
+
+ - open ('test/fixtures/users.yml')
+ - configure the users which should have access to the system
+ - the passwords of the users are stored in an sha1 hash. You can generate your own hashed password by typing ('echo -n "YourNewPassword" | openssl sha1') into your Terminal.
+ - run ('rake db:fixtures:load')
+
+That is all! Have fun with it!
