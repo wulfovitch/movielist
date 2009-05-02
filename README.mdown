@@ -3,6 +3,10 @@ movielist
 
 This is a personal rails project which I and my brother are using for tracking our movies we bought on dvd or bluray.
 
+[![](http://img.skitch.com/20090502-8wp6upp2henxncdd273c72byd.jpg)](http://img.skitch.com/20090502-mujek7ek7c4kaitm93wgw8qub3.jpg)
+[![](http://img.skitch.com/20090502-xi7d31tb57yqa1u9ypqk5bs5x7.jpg)](http://img.skitch.com/20090502-rh8x4qgxt8c8py36d7hh4afc9x.jpg)
+[![](http://img.skitch.com/20090502-npe5k33txik1g3khfsqnq7w33x.jpg)](http://img.skitch.com/20090502-t58pr6x25girqx15bggy6bh73a.jpg)
+
 Installation
 ============
 
