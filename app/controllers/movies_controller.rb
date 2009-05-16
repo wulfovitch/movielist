@@ -37,29 +37,6 @@ class MoviesController < ApplicationController
   
   def feed
     @movies = Movie.find(:all, :order => 'ID DESC', :limit => 20)
-    
-    collection_ids = Array.new
-    movies_to_be_removed = Array.new
-    for movie in @movies
-      unless movie.collection_id.nil?
-        collection_ids << movie.collection_id
-      end
-    end
-    collection_ids.uniq!
-
-    for movie in @movies
-      unless movie.collection_id.nil?
-        if collection_ids.include? movie.collection_id 
-          collection_ids.delete movie.collection_id
-        else
-          movies_to_be_removed << movie
-        end
-      end
-    end
-
-    for movie in movies_to_be_removed
-     @movies.delete(movie)
-    end
   end
   
   def show
