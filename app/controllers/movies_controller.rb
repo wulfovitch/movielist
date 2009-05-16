@@ -36,7 +36,7 @@ class MoviesController < ApplicationController
   end
   
   def feed
-    @movies = Movie.search(params[:search])
+    @movies = Movie.find(:all, :order => 'ID DESC', :limit => 20)
     
     collection_ids = Array.new
     movies_to_be_removed = Array.new
@@ -60,8 +60,6 @@ class MoviesController < ApplicationController
     for movie in movies_to_be_removed
      @movies.delete(movie)
     end
-    
-    @movies.sort! { |a,b| b.bought_at <=> a.bought_at }
   end
   
   def show
