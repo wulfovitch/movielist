@@ -8,7 +8,7 @@ module MoviesRenderHelper
   	return_string += "<hr class='movie_seperator_line' />"
     
     return_string += "<p class='movie_picture'>"
-  	return_string +=	 link_to image_tag(movie.photo.url, :width => '300'), movie.imdb_link
+  	return_string +=	 link_to image_tag(movie.photo.url), movie.imdb_link
   	return_string += "</p>"
   
   	return_string += "<p style='float: right;'>"
