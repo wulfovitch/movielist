@@ -61,7 +61,7 @@ class MoviesController < ApplicationController
      @movies.delete(movie)
     end
     
-    @movies.sort! { |a,b| a.bought_at <=> b.bought_at }
+    @movies.sort! { |a,b| b.bought_at <=> a.bought_at }
   end
   
   def show
