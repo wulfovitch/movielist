@@ -29,7 +29,6 @@ module MoviesHelper
   		return_string	+= ' <th class="unsortable">&nbsp;</th>'
       return_string += ' <th>title</th>'
   		return_string	+= ' <th>original title</th>'
-  		return_string	+= ' <th class="unsortable">imdb link</th>'
   		return_string	+= ' <th>purchase date</th>'
   		return_string	+= ' <th>media type</th>'
   		return_string	+= ' <th>disc type</th>'
@@ -47,9 +46,9 @@ module MoviesHelper
   		return_string += '	<td>'
 		
   		if movie.collection_id.nil?
-  		  return_string += image_tag '/images/icon_dvd.png'
+  		  return_string += link_to(image_tag('/images/icon_dvd.png'), movie.imdb_link)
   		else
-  		  return_string += image_tag '/images/icon_dvds.png'
+  		  return_string += link_to(image_tag('/images/icon_dvds.png'), movie.imdb_link)
   		end
 		
   		return_string += '	</td>'
@@ -73,8 +72,7 @@ module MoviesHelper
   		end
 		
   		return_string += '	</td>'
-  		return_string += '	<td>' + link_to('imdb link', movie.imdb_link) + '</td>'
-  		return_string += '	<td>' + movie.created_at.strftime('%Y-%m-%d') + '</td>'
+  		return_string += '	<td>' + movie.created_at.strftime('%Y/%m/%d') + '</td>'
   		return_string += '	<td>' + movie.media_type + '</td>'
   		return_string += '	<td>' + movie.disc_type + '</td>'
   		return_string += '	<td>' + movie.parental_rating + '</td>'

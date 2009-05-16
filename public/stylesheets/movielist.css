@@ -222,6 +222,27 @@ table.sortable tr.sortbottom td {
 	font-weight: bold;
 }
 
+/*****
+	Movie Details
+  */
+
+.movie_details {
+	
+}
+
+.movie_details td {
+	font-weight: bold;
+}
+
+.movie_details th {
+	text-align: right;
+	border: 0px;
+	padding-right: 3px;
+	color: #777;
+	font-size: 0.8em;
+	vertical-align: text-bottom;
+}
+
 /****
 	FORM
  */
@@ -335,4 +356,3 @@ form p {
 	font-size: 1.3em;
     border: 1px solid red;
 }
-
