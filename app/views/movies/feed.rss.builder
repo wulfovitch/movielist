@@ -10,13 +10,13 @@ xml.rss :version=>"2.0" do
         unless movie.collection_id.nil?
           xml.title(movie.collection.collection_title)
           xml.description()                    
-          xml.pubDate(movie.created_at.strftime("%a, %d %b %Y %H:%M:%S %z"))
+          xml.pubDate(movie.bought_at.strftime("%a, %d %b %Y %H:%M:%S %z"))
           xml.link collection_url(movie.collection)
           xml.guid collection_url(movie.collection)
         else
           xml.title(movie.movie_title)
           xml.description()                    
-          xml.pubDate(movie.created_at.strftime("%a, %d %b %Y %H:%M:%S %z"))
+          xml.pubDate(movie.bought_at.strftime("%a, %d %b %Y %H:%M:%S %z"))
           xml.link movie_url(movie)
           xml.guid movie_url(movie)
         end
