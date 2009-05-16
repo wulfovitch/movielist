@@ -22,7 +22,7 @@ module MoviesRenderHelper
   	return_string += '  </tr>'
   	return_string += '  <tr>'
   	return_string += '    <th>bought at:</th>'
-  	return_string += '    <td>'+movie.created_at.strftime("%Y/%m/%d")+'</td>'
+  	return_string += '    <td>'+movie.bought_at.strftime("%Y/%m/%d")+'</td>'
   	return_string += '  </tr>'
   	return_string += '  <tr>'
   	return_string += '    <th>owner:</th>'

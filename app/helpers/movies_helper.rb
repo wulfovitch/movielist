@@ -2,10 +2,10 @@ module MoviesHelper
   
 	def datechooser_input_field movie
 	  movie_created = ""
-	 	unless movie.created_at.nil?
-			movie_created = @movie.created_at.strftime("%Y-%m-%d")
+	 	unless movie.bought_at.nil?
+			movie_created = @movie.bought_at.strftime("%Y/%m/%d")
 		end
-		return '<input id="movie_created_at" name="movie[created_at]" class="datechooser dc-dateformat=\'Y-m-d\' dc-iconlink=\'/images/datechooser.png\' dc-weekstartday=\'1\' dc-startdate=\'' + Time.now.strftime("%m%d%Y") + '\' dc-latestdate=\'1231' + Time.now.strftime("%Y") + '\' dc-earliestdate=\'01012000\' type="text" value="' + movie_created + '">'
+		return '<input id="movie_bought_at" name="movie[bought_at]" class="datechooser dc-dateformat=\'Y/m/d\' dc-iconlink=\'/images/datechooser.png\' dc-weekstartday=\'1\' dc-startdate=\'' + Time.now.strftime("%m%d%Y") + '\' dc-latestdate=\'1231' + Time.now.strftime("%Y") + '\' dc-earliestdate=\'01012000\' type="text" value="' + movie_created + '">'
 	end
 	
 	def index_table user, movies, grouped_view
@@ -72,7 +72,7 @@ module MoviesHelper
   		end
 		
   		return_string += '	</td>'
-  		return_string += '	<td>' + movie.created_at.strftime('%Y/%m/%d') + '</td>'
+  		return_string += '	<td>' + movie.bought_at.strftime('%Y/%m/%d') + '</td>'
   		return_string += '	<td>' + movie.media_type + '</td>'
   		return_string += '	<td>' + movie.disc_type + '</td>'
   		return_string += '	<td>' + movie.parental_rating + '</td>'

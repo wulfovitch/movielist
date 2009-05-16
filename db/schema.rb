@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090405152809) do
+ActiveRecord::Schema.define(:version => 20090516165455) do
 
   create_table "collections", :force => true do |t|
     t.string   "collection_title",          :null => false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20090405152809) do
     t.string   "movie_title",          :null => false
     t.string   "movie_original_title"
     t.integer  "user_id",              :null => false
-    t.datetime "created_at"
+    t.datetime "bought_at"
     t.string   "imdb_link"
     t.string   "media_type"
     t.string   "disc_type"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20090405152809) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.datetime "created_at"
   end
 
   create_table "users", :force => true do |t|
