@@ -20,10 +20,14 @@ module MoviesRenderHelper
   	return_string += '    <th>original Title:</th>'
   	return_string += '    <td>'+movie.movie_original_title+'</td>'
   	return_string += '  </tr>'
-  	return_string += '  <tr>'
-  	return_string += '    <th>bought at:</th>'
-  	return_string += '    <td>'+movie.bought_at.strftime("%Y/%m/%d")+'</td>'
-  	return_string += '  </tr>'
+  	
+  	unless movie.bought_at.nil?
+    	return_string += '  <tr>'
+    	return_string += '    <th>bought at:</th>'
+    	return_string += '    <td>'+movie.bought_at.strftime("%Y/%m/%d")+'</td>'
+    	return_string += '  </tr>'
+    end
+    
   	return_string += '  <tr>'
   	return_string += '    <th>owner:</th>'
   	return_string += '    <td>'+movie.user.realname+'</td>'
