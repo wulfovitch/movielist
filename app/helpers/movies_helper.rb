@@ -72,7 +72,11 @@ module MoviesHelper
   		end
 		
   		return_string += '	</td>'
-  		return_string += '	<td>' + movie.bought_at.strftime('%Y/%m/%d') + '</td>'
+  		unless movie.bought_at.nil?
+  		  return_string += '	<td>' + movie.bought_at.strftime('%Y/%m/%d') + '</td>'
+  		else
+  		  return_string += '&nbsp;'
+  		end
   		return_string += '	<td>' + movie.media_type + '</td>'
   		return_string += '	<td>' + movie.disc_type + '</td>'
   		return_string += '	<td>' + movie.parental_rating + '</td>'
