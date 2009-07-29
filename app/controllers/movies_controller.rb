@@ -55,6 +55,17 @@ class MoviesController < ApplicationController
       @movie = Movie.new(params[:movie])
       user = User.find_by_id session[:user_id]
       @movie.user_id = user.id
+      
+      #set date
+      unless params[:movie][:bought_at].nil?
+        # a date of purchase was specified
+        date_array = params[:movie][:bought_at].split("/") 
+        @movie.bought_at = "#{date_array[2]}-#{date_array[1]}-#{date_array[0]} 00:00:00"
+      else
+        # no date was specified
+        @movie.bought_at = "#{Time.now.localtime.strftime("%Y-%m-%d")} 00:00:00"
+      end
+      
       @movie.save!
       flash[:notice] = 'Movie successfully created!'
       redirect_to movies_path
@@ -96,9 +107,21 @@ class MoviesController < ApplicationController
           @movie.collection.collection_title = params[:movie][:collection_name] # update collection
         end
       end
-    
-      # save the movie
-      @movie.attributes = params[:movie]      
+      
+      # get params
+      @movie.attributes = params[:movie]    
+      
+      # set date
+      unless params[:movie][:bought_at].nil?
+        # a date of purchase was specified
+        date_array = params[:movie][:bought_at].split("/") 
+        @movie.bought_at = "#{date_array[2]}-#{date_array[1]}-#{date_array[0]} 00:00:00"
+      else
+        # no date was specified
+        @movie.bought_at = "#{Time.now.localtime.strftime("%Y-%m-%d")} 00:00:00"
+      end
+      
+           
       @movie.save!
       #@movie.update_attributes(params[:movie])
       flash[:notice] = 'Movie successfully edited!'
