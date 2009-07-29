@@ -53,6 +53,10 @@ module MoviesHelper
 		
   		return_string += '	</td>'
       return_string += '  <td>'
+      
+      unless movie.foreign_language.nil?
+      	return_string += image_tag('/images/flags/'+movie.foreign_language+'.png', :alt => 'language: ' + movie.foreign_language) + '&nbsp;'
+      end
     
   		if movie.collection_id.nil?
   		  return_string += link_to movie.movie_title, movie_url(movie)

@@ -28,6 +28,13 @@ module MoviesRenderHelper
     	return_string += '  </tr>'
     end
     
+    unless movie.foreign_language.nil?
+    	return_string += '  <tr>'
+    	return_string += '    <th>foreign language:</th>'
+    	return_string += '    <td><img src="/images/flags/'+movie.foreign_language+'.png" /></td>'
+    	return_string += '  </tr>'
+    end
+    
   	return_string += '  <tr>'
   	return_string += '    <th>owner:</th>'
   	return_string += '    <td>'+movie.user.realname+'</td>'

@@ -36,6 +36,10 @@
 		<%= f.select(:parental_rating, [[@movie.parental_rating, @movie.parental_rating], ["usk 18", 18], ["usk 16", 16], ["usk 12", 12], ["usk 6", 6], ["usk ohne", 0]])%>
 	</p>
 	<p>
+		<%= f.label :foreign_language %>
+		<%= f.select(:foreign_language, [[@movie.foreign_language, @movie.foreign_language], ["english", :us], ["spanish", :es], ["german", :de], ["french", :fr]])%>
+	</p>
+	<p>
 		<%= f.label :photo %>
 		<%= f.file_field :photo %>
 	</p>
