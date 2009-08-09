@@ -66,6 +66,11 @@ class MoviesController < ApplicationController
         @movie.bought_at = "#{Time.now.localtime.strftime("%Y-%m-%d")} 00:00:00"
       end
       
+      # unset foreign language if none is set
+      if params[:movie][:foreign_language] == ""
+        @movie.foreign_language = nil
+      end
+      
       @movie.save!
       flash[:notice] = 'Movie successfully created!'
       redirect_to movies_path
@@ -109,7 +114,7 @@ class MoviesController < ApplicationController
       end
       
       # get params
-      @movie.attributes = params[:movie]    
+      @movie.attributes = params[:movie]
       
       # set date
       unless params[:movie][:bought_at].nil?
@@ -119,6 +124,11 @@ class MoviesController < ApplicationController
       else
         # no date was specified
         @movie.bought_at = "#{Time.now.localtime.strftime("%Y-%m-%d")} 00:00:00"
+      end
+      
+      # unset foreign language if none is set
+      if params[:movie][:foreign_language] == ""
+        @movie.foreign_language = nil
       end
       
            
