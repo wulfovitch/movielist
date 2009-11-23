@@ -10,7 +10,7 @@ This is a personal rails project which I and my brother are using for tracking o
 Installation
 ============
 
-You have to run the migrations first. There is no user registration integrated, because this project is a personal project and there was no need to add one. In order an predefined set of users to the database, you have to do the following:
+You have to run the migrations first. There is no user registration integrated, because this project is a personal project and there was no need to add one. In order to add a predefined set of users to the database, you have to do the following:
 
  - open `test/fixtures/users.yml`
  - configure the users which should have access to the system
