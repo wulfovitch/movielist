@@ -4,7 +4,6 @@
 <head>
 	<title>movie list - <%= yield(:title) || 'movie list' %></title>
 	<%= stylesheet 'movielist' %>
-	<%= javascript_include_tag :defaults %>
 	<%- if logged? -%>
 		<%= auto_discovery_link_tag :rss, feed_url %>
 	<%- end -%>
@@ -60,11 +59,9 @@
 			</div>
 		</div>
 		
-		<div id="footer">
-			<p>
-				&copy; <%= Time.now.year %> Wolfgang K&ouml;nig - movie list
-			</p>
-		</div>
+		<p id="footer">
+			movie list - &copy;<%= Time.now.year %> Wolfgang K&ouml;nig 
+		</p>
 		
 	</div>
 </body>
