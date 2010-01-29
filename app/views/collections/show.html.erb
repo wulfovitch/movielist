@@ -1,6 +1,11 @@
 <%- title @collection.collection_title || "" -%>
 <h2>
-	<%=image_tag('/images/icon_dvds.png') %> <%= link_to @collection.collection_title, edit_collection_url %>
+  <% if @movies.first.disc_type == 'bluray' %>
+	  <%=image_tag('/images/icon_blurays.png') %>
+	<% else %>
+	  <%=image_tag('/images/icon_dvds.png') %>
+	<% end%>
+	<%= link_to @collection.collection_title, edit_collection_url %>
 </h2>
 
 <%- unless @movies.nil? -%>
