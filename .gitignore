@@ -3,6 +3,7 @@ tmp/**/*
 .DS_Store
 doc/api
 doc/app
+tmp/restart.txt
 
 # we dont wanna have an database.yml in the repository
 config/database.yml
