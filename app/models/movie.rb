@@ -10,7 +10,7 @@ class Movie < ActiveRecord::Base
                     :path => ":rails_root/public/uploads/photos/:id_:style.:extension",
                     :default_url => '/uploads/missing_:style.png'
   
-  validates_attachment_size :photo, :less_than => 5.megabytes
+  validates_attachment_size :photo, :less_than => 10.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
   
   def to_param 
