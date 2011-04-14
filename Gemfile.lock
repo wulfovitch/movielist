@@ -28,5 +28,5 @@ PLATFORMS
 
 DEPENDENCIES
   mysql
-  rails (~> 2.3.11)
+  rails (~> 2.3.8)
   rmagick
