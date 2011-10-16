@@ -18,3 +18,4 @@ You have to run the migrations first. There is no user registration integrated, 
  - run `rake db:fixtures:load`
 
 That is all! Have fun with it!
+
