@@ -1,9 +1,6 @@
-<% javascript 'datechooser' %>
-<% stylesheet 'datechooser' %>
+<%# error_messages_for :movie %>   
 
-<%= error_messages_for :movie %>   
-
-<% form_for @movie, :html => { :multipart => true } do |f| %>    
+<%= form_for @movie, :html => { :multipart => true } do |f| %>    
 
 <fieldset>    
 	<legend><%= title %></legend>
@@ -17,7 +14,7 @@
 	</p>
 	<p>
 		<%= f.label :bought_at, 'Purchase date' %>
-		<%= datechooser_input_field @movie %>
+		<%= f.text_field :bought_at, :value => @movie.formatted_bought_at %>
 	</p>
 	<p>
 		<%= f.label :imdb_link %>
@@ -45,7 +42,8 @@
 	</p>
 	<p>
 	  <%= f.label :collection_name %>
-	  <%= text_field_with_auto_complete :movie, :collection_name, { :size => 15 }, { :url => formatted_collections_path(:js), :method => :get, :param_name => 'search' } %>
+    <%= f.text_field :collection_name %>
+    <%= f.hidden_field :collection_id %>
 	</p>
 	<p>
 		<%= f.submit 'Submit' %>

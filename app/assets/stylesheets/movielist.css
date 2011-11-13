@@ -1,0 +1,361 @@
+/* baseline: 18px; */
+
+* {
+padding: 0;
+margin: 0;
+}
+
+body {
+font-size: 62.5%;
+font-family: 'Lucida Grande', 'Lucida Sans Unicode', Lucida, Arial, Helvetica, sans-serif;
+color: #111111;
+line-height: 1.8em;
+margin-left: 3em;
+margin-right: 3em;
+margin-bottom: 2em;
+margin-top: 2em;
+}
+
+a:link, a:visited, a:active {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    color:  black;
+    text-decoration: underline;
+}
+
+h1, h2 {
+	color: #222222;
+}
+
+h1 {
+	font-size: 2.7em;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin-bottom: 0.666666em;
+}
+
+h1 a, h1 a:visited  {
+	color: #000;
+	text-decoration: none;
+}
+h1 a:hover {
+	color: #fff;
+	text-decoration: none;	
+	background-color: #437fda;
+}
+
+h2 {
+	font-size: 2.3em;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin-bottom: 0.666666em;
+}
+
+h3 {
+	font-size: 1.8em;
+	padding: 0 0 0.2em 0;
+}
+
+h4 {
+	font-size: 1.5em;
+	padding: 0.2em 0 0.5em 0;
+}
+
+p, ul {
+	font-size: 1.2em;
+	margin: 0 0 0.5em 0;
+}
+
+blockquote {
+font-weight: bold;
+padding: 0 10em;
+}
+
+blockquote p {
+margin: 0;
+}
+
+cite {
+text-align: right;
+display: block;
+}
+
+img {
+	border: 0px;
+}
+
+
+.movie_seperator_line {
+	border: 0px;
+	background-color: #000; /* color for opera and firefox */ 
+	color: #000; /* color for IE */
+	height: 1px;
+	margin-bottom: 5px;
+}
+
+.movie_picture {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	width: 310px;
+}
+
+/****
+	HEADER
+ */
+
+#header {
+	float: left;
+}
+
+/****
+	SEARCH
+ */
+
+#search_form {
+	float: right;
+	padding-top: 5px;
+}
+
+
+/****
+	MENU
+ */
+
+#menu {
+	background : #437fda;
+}
+#menu ul {
+	padding : 0.0em 0em;
+	text-align: right;
+}
+#menu li {
+	display : inline;
+}
+#menu li a {
+	color : #ffffff;
+	padding : 0.0em 1em;
+}
+#menu li a:hover {
+	background : #2b548c;
+}
+#menu li.selected a {
+	background : #ffffff;
+	border : 1px solid #2b548c;
+	border-bottom : 1px solid #ffffff;
+	color : #437fda;
+}
+#menu li.selected a:hover {
+	background: #ffffff;
+	color: #ba8f43;
+}
+
+/****
+	FOOTER
+ */
+
+#footer {
+	margin-top: 30px;
+	margin-left: 25px;
+	margin-right: 25px;
+	border-top: 1px dotted #555;
+	text-align: center;
+}
+
+/****
+	TABLES
+ */
+table {
+	font-size: 1.3em;
+}
+
+th {
+	text-align: left;
+	border-bottom: 1px solid #000;
+	font-weight: normal;
+}
+
+/****
+	TABLES (SORTABLE) - see: http://yoast.com/articles/sortable-table/
+ */
+table.sortable {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+table.sortable th, table.sortable td {
+	text-align: left;
+}
+table.sortable th {
+	color: #fff;
+	background-color: #437fda;
+}
+table.sortable th a {
+	font-weight: normal;
+	color: #fff;
+	display: block;
+}
+table.sortable th:hover {
+	font-weight: normal;
+	color: #fff;
+	text-decoration: none;
+}
+table.sortable th a:hover {
+	font-weight: normal;
+	color: #fff;
+	background-color: #2b548c;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+table.sortable td {
+	border-width: 0px 1px 0px 1px;
+}
+table.sortable tr.odd td {
+	background-color: #e9efff;
+}
+table.sortable tr.even td {
+	background-color: #fff;
+}
+table.sortable tr.sortbottom td {
+	border-top: 1px solid #444;
+	background-color: #ccc;
+	font-weight: bold;
+}
+
+/*****
+	Movie Details
+  */
+
+.movie_details {
+	
+}
+
+.movie_details td {
+	font-weight: bold;
+}
+
+.movie_details th {
+	text-align: right;
+	border: 0px;
+	padding-right: 3px;
+	color: #777;
+	font-size: 0.8em;
+	vertical-align: text-bottom;
+}
+
+/****
+	FORM
+ */
+
+form p, .fieldWithErrors {
+	padding-left: 20px;
+}
+
+
+form label, .fieldWithErrors label {
+	color: #114477;
+	font-weight: bold;
+	clear: both;
+	display: block;
+	padding-bottom: 0px;
+	margin-top: 7px;
+}
+form input, form textarea {
+	font-size: 1.1em;
+}
+form p.input, form p.text {
+	background : #ffffff;
+}
+
+form fieldset {
+	background-color: #f5f5f5;
+	border: 1px solid #777;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+form legend {
+	color: black;
+	background-color: white;
+	font-weight: bold;
+	border: 1px solid black;
+	margin-left: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	font-size: 1.2em;
+}
+
+form .multiple_textfields {
+    float: left;
+    padding-right: 15px;
+	padding-bottom: 20px;
+	margin-top: 0px;
+}
+
+form p {
+    clear: both;
+}
+
+/****
+	ERRORS / NOTICES
+ */
+
+#notice {
+    border: 1px solid green;
+    padding: 0.2em;
+    margin: 0.5em 0.5em;
+    background-color: #cfc;
+    font-weight: bold;
+    color: black;
+}
+
+#errorExplanation {
+    border: 1px solid red;
+    padding: 0.2em;
+    margin: 0.5em 0.5em;
+    background-color: #fcc;
+    font-weight: bold;
+    color: black;
+}
+
+#errorExplanation p {
+    font-size: 14px;
+    color: black;
+}
+
+#errorExplanation h2 {
+    font-size: 16px;
+    color: black;
+    padding-bottom: 5px;
+}
+
+#errorExplanation ul {
+    font-size: 13px;
+    color: black;
+    list-style-type: square;
+    padding-left: 30px;
+}
+
+#error {
+    border: 1px solid red;
+    padding: 0.2em;
+    margin: 0.5em 0.5em;
+    background-color: #fcc;
+    font-weight: bold;
+    color: black;
+}
+
+.fieldWithErrors label {
+	font-size: 1.3em;
+	color: #ff0000;
+}
+
+.fieldWithErrors input {
+	font-size: 1.3em;
+    border: 1px solid red;
+}

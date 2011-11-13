@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def logged?
     if session[:user_id]
       return true
@@ -23,5 +23,5 @@ module ApplicationHelper
   def stylesheet(file)
     content_for(:head) { stylesheet_link_tag(file) }
   end
-  
+
 end

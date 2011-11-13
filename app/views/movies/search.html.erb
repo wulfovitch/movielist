@@ -1,0 +1,9 @@
+<%- unless @movies.nil? -%>
+
+	<% for movie in @movies %>
+
+		<%= show_movie movie %>
+	
+	<% end %>
+
+<%- end -%>

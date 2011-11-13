@@ -1,25 +1,18 @@
 module MoviesHelper 
-  
-	def datechooser_input_field movie
-	  movie_created = ""
-	 	unless movie.bought_at.nil?
-			movie_created = @movie.bought_at.strftime("%Y/%m/%d")
-		end
-		return '<input id="movie_bought_at" name="movie[bought_at]" class="datechooser dc-dateformat=\'Y/m/d\' dc-iconlink=\'/images/datechooser.png\' dc-weekstartday=\'1\' dc-startdate=\'' + Time.now.strftime("%m%d%Y") + '\' dc-latestdate=\'1231' + Time.now.strftime("%Y") + '\' dc-earliestdate=\'01012000\' type="text" value="' + movie_created + '">'
-	end
 	
 	def index_table user, movies, grouped_view
 	  return_string = '<h4>' + user + ' (' + movies.length.to_s + ')</h4>'
-		return_string += '<table width="100%" class="sortable" id="sortabletable_' + user  + '">'
+		return_string << '<table width="100%" class="sortable" id="sortabletable_' + user  + '">'
 		
-		return_string += index_table_header grouped_view
+		return_string << index_table_header(grouped_view)
 
 		for movie in movies
-		  return_string += index_table_content_row movie, grouped_view
+		  return_string << index_table_content_row(movie, grouped_view)
 		end
 
-		return_string += '</table>'
-	  return_string += '<br />'
+		return_string << '</table>'
+	  return_string << '<br />'
+	  return_string.html_safe
 	end
 	
 	private
@@ -36,8 +29,7 @@ module MoviesHelper
   		  return_string << ' <th>owner</th>'
   		end
       return_string << '</tr>'
-    
-      return return_string
+      return_string
   	end
 	
   	def index_table_content_row movie, grouped_view
@@ -62,7 +54,7 @@ module MoviesHelper
       return_string << '  <td>'
       
       unless movie.foreign_language.nil?
-      	return_string << image_tag('/images/flags/'+movie.foreign_language+'.png', :alt => 'language: ' + movie.foreign_language) + '&nbsp;'
+      	return_string << image_tag('/images/flags/'+movie.foreign_language+'.png', :alt => 'language: ' + movie.foreign_language) + '&nbsp;'.html_safe
       end
     
   		if movie.collection_id.nil?
@@ -83,19 +75,14 @@ module MoviesHelper
   		end
 		
   		return_string << '	</td>'
-  		unless movie.bought_at.nil?
-  		  return_string << '	<td>' + movie.bought_at.strftime('%Y/%m/%d') + '</td>'
-  		else
-  		  return_string << '<td>&nbsp;</td>'
-  		end
+  		return_string << '	<td>' + movie.formatted_bought_at + '</td>'
   		return_string << '	<td>' + movie.media_type + '</td>'
   		return_string << '	<td>' + movie.parental_rating + '</td>'
   		unless grouped_view
   		  return_string << '	<td>' + movie.user.realname + '</td>'
   		end
       return_string << '</tr>'
-	
-  	  return return_string
+  	  return_string.html_safe
   	end
 	
 end

@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
   helper :movies_render
 
   def index
-    @collections = Collection.find(:all, :conditions => ['collection_title LIKE ?', "%#{params[:search]}%"])
+    @collections = Collection.all(:conditions => ['collection_title LIKE ?', "%#{params[:search]}%"])
   end
   
   def show
@@ -21,7 +21,6 @@ class CollectionsController < ApplicationController
   def update
     begin
       @collection = Collection.find(params[:id])
-      # save the collection
       @collection.attributes = params[:collection]
       @collection.save!
       flash[:notice] = 'Collection successfully edited!'

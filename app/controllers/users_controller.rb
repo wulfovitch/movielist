@@ -14,10 +14,10 @@ class UsersController < ApplicationController
           redirect_to movies_url
         else
           flash[:error] = "You have entered wrong login data!"
-          redirect_to home_url
+          redirect_to root_url
         end
       else
-        #redirect_to home_url
+        #redirect_to root_url
       end
     end 
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:notice] = "You are now logged off!"
-    redirect_to home_url
+    redirect_to root_url
   end
   
   def start

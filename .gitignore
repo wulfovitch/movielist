@@ -1,9 +1,12 @@
+.bundle
+db/*.sqlite3
 log/*.log
-tmp/**/*
+tmp/
+.sass-cache/
 .DS_Store
 doc/api
 doc/app
-tmp/restart.txt
+vendor/cache/
 
 # we dont wanna have an database.yml in the repository
 config/database.yml

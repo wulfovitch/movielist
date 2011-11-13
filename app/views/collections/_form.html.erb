@@ -1,22 +1,22 @@
-<% form_for @collection, :html => { :multipart => true } do |f| %>    
+<%= form_for @collection, :html => { :multipart => true } do |f| %>    
 
-<%= error_messages_for :collection %>  
+<%# error_messages_for :collection %>  
  
-<fieldset>    
-	<legend><%= title %></legend>
-	<p>
-		<%= f.label :collection_title %>
-		<%= f.text_field :collection_title %>
-	</p>
-	<p>
-		<%= f.label :collection_original_title %>
-		<%= f.text_field :collection_original_title %>
-	</p>
-	<p>
-		<%= f.submit 'Submit' %>
-	</p>
-	<p>
-	 		<%= link_to 'Cancel', :back || movies_path %>
-	</p>
-</fieldset>
+  <fieldset>    
+    <legend><%= title %></legend>
+    <p>
+      <%= f.label :collection_title %>
+      <%= f.text_field :collection_title %>
+    </p>
+    <p>
+      <%= f.label :collection_original_title %>
+      <%= f.text_field :collection_original_title %>
+    </p>
+    <p>
+      <%= f.submit 'Submit' %>
+    </p>
+    <p>
+      <%= link_to 'Cancel', :back || movies_path %>
+    </p>
+  </fieldset>
 <% end %>

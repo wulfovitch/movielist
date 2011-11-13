@@ -24,7 +24,7 @@ module MoviesRenderHelper
   	unless movie.bought_at.nil?
     	return_string << '  <tr>'
     	return_string << '    <th>bought at:</th>'
-    	return_string << '    <td>'+movie.bought_at.strftime("%Y/%m/%d")+'</td>'
+    	return_string << '    <td>'+movie.formatted_bought_at+'</td>'
     	return_string << '  </tr>'
     end
     
@@ -70,8 +70,7 @@ module MoviesRenderHelper
   	return_string << '</table>'
 	  
   	return_string << "<div style='clear: both;'></div>"
-  	
-  	return return_string
+  	return_string.html_safe
   end
   
 end
