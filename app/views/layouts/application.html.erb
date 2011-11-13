@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>movie list - <%= yield(:title) || 'movie list' %></title>
-	<%= stylesheet 'movielist' %>
-	<%= stylesheet 'jquery-ui' %>
+  <%= stylesheet 'application' %>
 	<%= javascript 'application' %>
 	<%- if logged? -%>
 		<%= auto_discovery_link_tag :rss, feed_url %>
