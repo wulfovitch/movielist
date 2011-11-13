@@ -3,7 +3,7 @@ xml.rss :version=>"2.0" do
   xml.channel do
     xml.title "movie list"
     xml.description "movie list - keep track of your movie collection!"
-    xml.link movie_url
+    xml.link movies_url
     
     for movie in @movies
       xml.item do
