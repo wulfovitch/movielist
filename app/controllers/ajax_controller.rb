@@ -1,8 +1,8 @@
 class AjaxController < ApplicationController
   def collections
     if params[:term]
-      like = "%".concat(params[:term].concat("%"))
-      collections = Collection.where("collection_title like ?", like)
+      like = "%".concat(params[:term].downcase.concat("%"))
+      collections = Collection.where("lower(collection_title) like ?", like)
     else
       collections = Collection.all
     end
